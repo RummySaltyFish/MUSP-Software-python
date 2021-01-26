@@ -5,6 +5,7 @@
 # @File    : defines.py
 # @Software: PyCharm
 from PyQt5.QtWidgets import QWidget, QMessageBox, QApplication
+#通讯及控制类
 def terminalsignal():
     pass
 

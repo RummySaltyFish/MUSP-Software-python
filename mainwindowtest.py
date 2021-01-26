@@ -10,7 +10,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import defines
-
+#窗体格式
 class Ui_MainWindow(object):
 
     def setupUi(self, MainWindow):
@@ -98,10 +98,10 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         self.Exit.triggered.connect(MainWindow.close)
 
-        """self.actionsystemgetsignal.triggered.connect(defines.terminalsignal())
-        self.actionsystemrefresh.triggered.connect(defines.refreshsystem())
-        self.actiongetmodule.triggered.connect(defines.getmodule())
-        self.actionrefreshmodule.triggered.connect(defines.refreshmodule())"""
+        # self.actionsystemgetsignal.triggered.connect(defines.terminalsignal())#获得平台数据
+        # self.actionsystemrefresh.triggered.connect(defines.refreshsystem())#强制刷新平台数据
+        # self.actiongetmodule.triggered.connect(defines.getmodule())#获得模块数据
+        # self.actionrefreshmodule.triggered.connect(defines.refreshmodule())#强制刷新模块数据
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
