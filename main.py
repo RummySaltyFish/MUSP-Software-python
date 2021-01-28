@@ -9,7 +9,7 @@ import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
 
 import mainwindowtest
-#运行程序
+#运行程序pip install pyserial
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     MainWindow = QMainWindow()
