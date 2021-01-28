@@ -1,0 +1,4 @@
+*.pyc
+/doc/_build
+.idea
+venv/
