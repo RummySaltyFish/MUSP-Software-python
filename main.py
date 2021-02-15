@@ -7,13 +7,19 @@
 
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
+import serial.tools.list_ports
+from mainwindowtest import Ui_MainWindow
 
-import mainwindowtest
-#运行程序pip install pyserial
+
+
+
+
+
+# 运行程序pip install pyserial
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    MainWindow = QMainWindow()
-    ui = mainwindowtest.Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
+	app = QApplication(sys.argv)
+	MainWindow = QMainWindow()
+	ui = Ui_MainWindow()
+	ui.setupUi(MainWindow)
+	MainWindow.show()
+	sys.exit(app.exec_())
