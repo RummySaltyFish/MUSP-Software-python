@@ -109,7 +109,12 @@ class Ui_MainWindow(object):
 
 		self.retranslateUi(MainWindow)
 		self.Exit.triggered.connect(MainWindow.close)
-		self.comportchoose.activated.connect(MainWindow.broadcastConfirm)
+		self.comportchoose.activated.connect(MainWindow.broadcastconfirmsend)
+		self.actionsystemgetsignal.triggered.connect(MainWindow.terminalsignalsend)
+		self.actionsystemrefresh.triggered.connect(MainWindow.terminalsignalsend)
+		self.actiongetmodule.triggered.connect(MainWindow.getmodulesend)
+		self.actionrefreshmodule.triggered.connect(MainWindow.getmodulesend)
+		self.Refresh.clicked.connect(MainWindow.refreshsystemsend)
 		QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
 	def retranslateUi(self, MainWindow):
