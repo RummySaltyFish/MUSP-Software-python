@@ -108,6 +108,7 @@ class Ui_MainWindow(object):
 		self.menubar.addAction(self.menuhelp.menuAction())
 
 		self.retranslateUi(MainWindow)
+		self.Exit.triggered.connect(MainWindow.closeDevice)
 		self.Exit.triggered.connect(MainWindow.close)
 		self.comportchoose.activated.connect(MainWindow.broadcast_confirm_send)
 		self.actionsystemgetsignal.triggered.connect(MainWindow.terminal_signal_send)
