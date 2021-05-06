@@ -67,25 +67,28 @@ class MainWindow(QMainWindow, QApplication):
 
 	def switch_case(self, xbee_message):
 		case_dict = {
-			"7501": self.terminal_signal_get(xbee_message.data.hex()[4:-1]),
-			"7502": self.module_signal_get(xbee_message.data.hex()[4:-1]),
-			"75ff": self.establish_connection(xbee_message.data.hex())
+			"7501": self.terminal_signal_get(terminal_data=xbee_message.data.hex()[4:]),
+			"7502": self.module_signal_get(module_data=xbee_message.data.hex()[4:]),
+			"75ff": self.establish_connection(address=xbee_message.data.hex()[4:])
 		}
 		return case_dict.get(xbee_message.data.hex()[0:4], 'No such method')
 
 	def establish_connection(self, address):
 		self.remote_device = RemoteXBeeDevice(Raw802Device, XBee64BitAddress.from_hex_string(address))
-		MainWindow.Raw802Device.send_data("\x75\xff" + MainWindow.Raw802Device.get_64bit_addr(),
-										  self.remote_device)
-		print(self.remote_device)
+		self.Raw802Device.send_data(self.remote_device,
+									"\x75\xff" + hex(int(str(self.Raw802Device.get_64bit_addr()), 16)))
 
 	def terminal_signal_get(self, terminal_data):  # 获得并显示系统当前的信息，默认电量信息在前，模组数量信息在后
+		terminal_dict = {
+			'电量': '???',
+			'现有模组数': '???'
+		}
 		for i in range(0, int(terminal_data[0:2], 16)):
 			if terminal_data[(2 + 4 * i):(4 + 4 * i)] == '01':  # ‘01’表示平台电量，默认其在前
-				cell = str(int(terminal_data[4 + 4 * i:6 + 4 * i]))
+				terminal_dict['电量'] = str(int(terminal_data[4 + 4 * i:6 + 4 * i]))
 			elif terminal_data[(2 + 4 * i):(4 + 4 * i)] == '02':  # ‘02’表示模组数量，默认在后
-				Mdcnt = str(int(terminal_data[4 + 4 * i:6 + 4 * i]))
-		self.ui.label.setText('电量：' + cell + '\n现加载的模组数量：' + Mdcnt)
+				terminal_dict['现有模组数'] = str(int(terminal_data[4 + 4 * i:6 + 4 * i]))
+		self.ui.label.setText('电量：' + '\n现加载的模组数：')
 		QApplication.processEvents()
 
 	def module_signal_get(self, module_data):
