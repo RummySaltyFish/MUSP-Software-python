@@ -1,0 +1,9 @@
+
+_python:S2208"GImport only needed names or import the module and then use its members.(•ûìª
+xpython:S117"\Rename this local variable "Deviceclose" to match the regular expression ^[_a-z][a-z0-9_]*$.(‚àîüÿÿÿÿ
+Upython:S5754•"<Specify an exception class to catch or reraise the exception(ˆÊÉ·
+Apython:S108 ")Either remove or fill this block of code.(ã‘Û¾
+Apython:S108¦")Either remove or fill this block of code.(ã‘Û¾
+Apython:S108¯")Either remove or fill this block of code.(ã‘Û¾
+Apython:S108¸")Either remove or fill this block of code.(ã‘Û¾
+Apython:S108Á")Either remove or fill this block of code.(ã‘Û¾

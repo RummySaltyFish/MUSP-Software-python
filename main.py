@@ -12,6 +12,8 @@ from mainwindowtest import Ui_MainWindow
 from digi.xbee.devices import Raw802Device, RemoteXBeeDevice
 from digi.xbee.models.address import XBee64BitAddress
 import digi
+from serial.tools.list_ports import *
+from serial import Serial
 
 
 class MainWindow(QMainWindow, QApplication):
@@ -21,7 +23,14 @@ class MainWindow(QMainWindow, QApplication):
 		self.ui.setupUi(self)
 
 	def close_device(self):
-		self.Raw802Device.close()
+		for port in comports():
+			try:
+				s = Serial(str(port)[0:4])
+				s.close()
+				Deviceclose = digi.xbee.devices.Raw802Device(str(port)[0:4], 115200)
+				Deviceclose.close()
+			except (OSError, serial.SerialException):
+				pass
 
 	def into_hex(self, goalstr):
 		hex_dict = {'00': '\x00', '01': '\x01', '02': '\x02', '03': '\x03', '04': '\x04', '05': '\x05', '06': '\x06',
@@ -85,10 +94,60 @@ class MainWindow(QMainWindow, QApplication):
 
 					'f0': '\xf0', 'f1': '\xf1', 'f2': '\xf2', 'f3': '\xf3', 'f4': '\xf4', 'f5': '\xf5', 'f6': '\xf6',
 					'f7': '\xf7', 'f8': '\xf8', 'f9': '\xf9', 'fa': '\xfa', 'fb': '\xfb', 'fc': '\xfc', 'fd': '\xfd',
-					'fe': '\xfe', 'ff': '\xff'}
-		hexget = ""
+					'fe': '\xfe', 'ff': '\xff',
+
+					'0A': '\x0A', '0B': '\x0B', '0C': '\x0C', '0D': '\x0D', '0E': '\x0E', '0F': '\x0F',
+
+					'1A': '\x1A', '1B': '\x1B', '1C': '\x1C', '1D': '\x1D', '1E': '\x1E', '1F': '\x1F',
+
+					'2A': '\x2A', '2B': '\x2B', '2C': '\x2C', '2D': '\x2D', '2E': '\x2E', '2F': '\x2F',
+
+					'3A': '\x3A', '3B': '\x3B', '3C': '\x3C', '3D': '\x3D', '3E': '\x3E', '3F': '\x3F',
+
+					'4A': '\x4A', '4B': '\x4B', '4C': '\x4C', '4D': '\x4D', '4E': '\x4E', '4F': '\x4F',
+
+					'5A': '\x5A', '5B': '\x5B', '5C': '\x5C', '5D': '\x5D', '5E': '\x5E', '5F': '\x5F',
+
+					'6A': '\x6A', '6B': '\x6B', '6C': '\x6C', '6D': '\x6D', '6E': '\x6E', '6F': '\x6F',
+
+					'7A': '\x7A', '7B': '\x7B', '7C': '\x7C', '7D': '\x7D', '7E': '\x7E', '7F': '\x7F',
+
+					'8A': '\x8A', '8B': '\x8B', '8C': '\x8C', '8D': '\x8D', '8E': '\x8E', '8F': '\x8F',
+
+					'9A': '\x9A', '9B': '\x9B', '9C': '\x9C', '9D': '\x9D', '9E': '\x9E', '9F': '\x9F',
+
+					'A0': '\xA0', 'A1': '\xA1', 'A2': '\xA2', 'A3': '\xA3', 'A4': '\xA4', 'A5': '\xA5', 'A6': '\xA6',
+					'A7': '\xA7', 'A8': '\xA8', 'A9': '\xA9', 'AA': '\xAA', 'AB': '\xAB', 'AC': '\xAC', 'AD': '\xAD',
+					'AE': '\xAE', 'AF': '\xAF',
+
+					'B0': '\xB0', 'B1': '\xB1', 'B2': '\xB2', 'B3': '\xB3', 'B4': '\xB4', 'B5': '\xB5', 'B6': '\xB6',
+					'B7': '\xB7', 'B8': '\xB8', 'B9': '\xB9', 'BA': '\xBA', 'BB': '\xBB', 'BC': '\xBC', 'BD': '\xBD',
+					'BE': '\xBE', 'BF': '\xBF',
+
+					'C0': '\xC0', 'C1': '\xC1', 'C2': '\xC2', 'C3': '\xC3', 'C4': '\xC4', 'C5': '\xC5', 'C6': '\xC6',
+					'C7': '\xC7', 'C8': '\xC8', 'C9': '\xC9', 'CA': '\xCA', 'CB': '\xCB', 'CC': '\xCC', 'CD': '\xCD',
+					'CE': '\xCE', 'CF': '\xCF',
+
+					'D0': '\xD0', 'D1': '\xD1', 'D2': '\xD2', 'D3': '\xD3', 'D4': '\xD4', 'D5': '\xD5', 'D6': '\xD6',
+					'D7': '\xD7', 'D8': '\xD8', 'D9': '\xD9', 'DA': '\xDA', 'DB': '\xDB', 'DC': '\xDC', 'DD': '\xDD',
+					'DE': '\xDE', 'DF': '\xDF',
+
+					'E0': '\xE0', 'E1': '\xE1', 'E2': '\xE2', 'E3': '\xE3', 'E4': '\xE4', 'E5': '\xE5', 'E6': '\xE6',
+					'E7': '\xE7', 'E8': '\xE8', 'E9': '\xE9', 'EA': '\xEA', 'EB': '\xEB', 'EC': '\xEC', 'ED': '\xED',
+					'EE': '\xEE', 'EF': '\xEF',
+
+					'F0': '\xF0', 'F1': '\xF1', 'F2': '\xF2', 'F3': '\xF3', 'F4': '\xF4', 'F5': '\xF5', 'F6': '\xF6',
+					'F7': '\xF7', 'F8': '\xF8', 'F9': '\xF9', 'FA': '\xFA', 'FB': '\xFB', 'FC': '\xFC', 'FD': '\xFD',
+					'FE': '\xFE', 'FF': '\xFF'}
+		hexget = 'str'
 		for i in range(0, len(goalstr), 2):
-			hexget = hexget + hex_dict.get(goalstr[i:i + 2])
+			try:
+				if i == 0:
+					hexget = hex_dict.get(goalstr[[i, i + 1]])
+				else:
+					hexget = hexget + hex_dict.get(goalstr[[i, i + 1]])
+			except:
+				pass
 		return hexget
 
 	def broadcast_confirm_send(self):  # 广播帧别码
@@ -134,23 +193,26 @@ class MainWindow(QMainWindow, QApplication):
 			pass
 
 	def switch_case(self, xbee_message):
+		QApplication.processEvents()
 		case_dict = {
 			"7501": self.terminal_signal_get(terminal_data=xbee_message.data.hex()[4:]),
 			"7502": self.module_signal_get(module_data=xbee_message.data.hex()[4:]),
-			"75ff": self.establish_connection(address=xbee_message.data.hex()[4:])
+			"7503": self.establish_connection(address=xbee_message.data.hex()[4:])
 		}
 		return case_dict.get(xbee_message.data.hex()[0:4], 'No such method')
 
 	def establish_connection(self, address):
 		self.remote_device = RemoteXBeeDevice(Raw802Device, XBee64BitAddress.from_hex_string(address))
 		self.Raw802Device.send_data(self.remote_device,
-									"\x75\xff" + self.into_hex(str(self.Raw802Device.get_64bit_addr())))
+									"\x75" + "\x03" + str(self.Raw802Device.get_64bit_addr()))
+		QApplication.processEvents()
 
 	def terminal_signal_get(self, terminal_data):  # 获得并显示系统当前的信息，默认电量信息在前，模组数量信息在后
 		terminal_dict = {
 			'电量': '???',
 			'现有模组数': '???'
 		}
+		QApplication.processEvents()
 		for i in range(0, int(terminal_data[0:2], 16)):
 			if terminal_data[(2 + 4 * i):(4 + 4 * i)] == '01':  # ‘01’表示平台电量，默认其在前
 				terminal_dict['电量'] = str(int(terminal_data[4 + 4 * i:6 + 4 * i]))
@@ -164,9 +226,11 @@ class MainWindow(QMainWindow, QApplication):
 			"01": "空气质量检测",
 			"02": "环境温度检测"
 		}
+		QApplication.processEvents()
 		for i in range(0, int(module_data[0:2], 16)):
 			self.ui.modulechoose.addItems(module_type.get(module_data[(2 + 4 * i):(4 + 4 * i)]))
 			QApplication.processEvents()
+		QApplication.processEvents()
 
 
 if __name__ == '__main__':

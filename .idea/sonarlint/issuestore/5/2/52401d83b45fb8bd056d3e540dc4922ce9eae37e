@@ -1,0 +1,14 @@
+
+ppython:S116"TRename this field "gridLayout_2" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÒİÃşÿÿÿÿ
+vpython:S116_"ZRename this field "actionNothing_Here" to match the regular expression ^[_a-z][_a-z0-9]*$.(¹½ÿÂÿÿÿÿÿ
+hpython:S116C"QRename this field "menuFiles" to match the regular expression ^[_a-z][_a-z0-9]*$.(›¨—İ
+bpython:S116O"LRename this field "Exit" to match the regular expression ^[_a-z][_a-z0-9]*$.(…‚e
+mpython:S116"QRename this field "tableView" to match the regular expression ^[_a-z][_a-z0-9]*$.(œÚÒÃøÿÿÿÿ
+fpython:S116/"ORename this field "Refresh" to match the regular expression ^[_a-z][_a-z0-9]*$.(õ¿ÿ®
+ipython:S116E"RRename this field "menuModule" to match the regular expression ^[_a-z][_a-z0-9]*$.(İ›¦¿
+ƒpython:S101"gRename class "Ui_MainWindow" to match the regular expression ^_?([A-Z_][a-zA-Z0-9]*|[a-z_][a-z0-9_]*)$.( Ìñıùÿÿÿÿ
+rpython:S117"VRename this parameter "MainWindow" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÂéÇ´ÿÿÿÿÿ
+wpython:S117 "[Rename this local variable "sizePolicy" to match the regular expression ^[_a-z][a-z0-9_]*$.(¶ÎÓŠûÿÿÿÿ
+gpython:S100"KRename method "setupUi" to match the regular expression ^[a-z_][a-z0-9_]*$.(ÂéÇ´ÿÿÿÿÿ
+rpython:S117w"VRename this parameter "MainWindow" to match the regular expression ^[_a-z][a-z0-9_]*$.(”«Àşÿÿÿÿ
+mpython:S100w"QRename method "retranslateUi" to match the regular expression ^[a-z_][a-z0-9_]*$.(”«Àşÿÿÿÿ

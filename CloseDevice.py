@@ -5,13 +5,12 @@
 import serial.tools.list_ports
 from digi.xbee.devices import Raw802Device, RemoteXBeeDevice
 import digi
-ports = serial.tools.list_ports.comports()
-result = []
-for port in ports:
+
+for port in serial.tools.list_ports.comports():
 	try:
 		s = serial.Serial(str(port)[0:4])
 		s.close()
-		Raw802Device=digi.xbee.devices.Raw802Device(str(port)[0:4],115200)
-		Raw802Device.close()
+		Deviceclose = digi.xbee.devices.Raw802Device(str(port)[0:4], 115200)
+		Deviceclose.close()
 	except (OSError, serial.SerialException):
 		pass
